@@ -1,14 +1,25 @@
-import { Package } from "lucide-react";
+import { Package, X } from "lucide-react";
+import { useState } from "react";
 
 const NotificationBar = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) return null;
+
   return (
-    <div className="bg-accent py-3 px-4">
+    <div className="bg-accent py-3 px-4 relative">
       <div className="container mx-auto flex items-center justify-center gap-3">
-        <span className="text-2xl">😍</span>
+        <Package className="w-5 h-5 text-accent-foreground" />
         <span className="text-accent-foreground font-medium text-lg">
-          لقد تم التوصل بطلبك
+          شحن مجاني لجميع الطلبات فوق 200 ريال
         </span>
-        <span className="text-2xl">😍</span>
+        <button
+          onClick={() => setIsVisible(false)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-accent-foreground hover:text-accent-foreground/80 transition-colors"
+          aria-label="إغلاق"
+        >
+          <X className="w-5 h-5" />
+        </button>
       </div>
     </div>
   );
