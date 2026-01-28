@@ -188,12 +188,12 @@ const JaydenCollection = () => {
               وفري أكثر مع المجموعة الكاملة!
             </p>
             <p className="text-primary-foreground/90 text-xs sm:text-sm mt-1">
-              خصم 55% + توصيل مجاني
+              خصم 55%
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-            {["4 منتجات فاخرة", "توصيل مجاني", "خصم حصري"].map((feature, i) => (
+            {["4 منتجات فاخرة", "خصم حصري"].map((feature, i) => (
               <div key={i} className="flex items-center gap-1.5 sm:gap-2 text-primary-foreground/90 text-sm sm:text-base">
                 <Check className="w-4 h-4 sm:w-5 sm:h-5 text-gold flex-shrink-0" />
                 <span>{feature}</span>

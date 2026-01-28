@@ -213,7 +213,6 @@ const FloatingBuyButton = () => {
                                 <span className="font-bold text-gold text-lg">21.15 د.ك</span>
                                 <span className="text-muted-foreground">مجموعة جايدن (4 منتجات)</span>
                             </div>
-                            <p className="text-green-600 text-xs mt-2 text-right">✓ توصيل مجاني</p>
                         </div>
 
                         <Button
