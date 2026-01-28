@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/radiant-glow-hub/",
+  base: "/aromakw/",
   server: {
     host: "::",
     port: 8080,
