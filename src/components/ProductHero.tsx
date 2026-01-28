@@ -22,9 +22,8 @@ const ProductHero = () => {
           {/* Product Text */}
           <div className="w-full md:w-2/3 text-center md:text-right">
             <h1 className="text-cream text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-2 sm:mb-4">مجموعة جايدن</h1>
-            <h2 className="text-gold-light text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed mb-2 sm:mb-4">إذا تبين شي يرفع مزاجچ من أول لحظة… جايدن خيارچ لا تفوّتين العرض.</h2>
-            <p className="text-cream/80 text-base sm:text-lg md:text-xl font-medium">
-              خـاليه من الـفراغات وكـثيفة
+            <p className="text-gold-light text-base sm:text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
+              صنعت بمكونات طبيعية غنية بالزيوت والزبدات المغذية للبشرة تحتوي على عسل المانوكا والشوفان
             </p>
           </div>
         </div>
