@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { Volume2, VolumeX } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -41,6 +42,8 @@ const videoTestimonials = [
 const VideoTestimonials = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [unmutedVideoId, setUnmutedVideoId] = useState<number | null>(null);
+  const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
   useEffect(() => {
     if (!api) return;
@@ -48,6 +51,8 @@ const VideoTestimonials = () => {
     setCurrent(api.selectedScrollSnap());
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap());
+      // Mute all videos when sliding
+      setUnmutedVideoId(null);
     });
 
     const interval = setInterval(() => {
@@ -56,6 +61,16 @@ const VideoTestimonials = () => {
 
     return () => clearInterval(interval);
   }, [api]);
+
+  const toggleMute = (videoId: number) => {
+    if (unmutedVideoId === videoId) {
+      // Mute current video
+      setUnmutedVideoId(null);
+    } else {
+      // Unmute this video, mute others
+      setUnmutedVideoId(videoId);
+    }
+  };
 
   return (
     <section className="py-10 sm:py-12 lg:py-16 bg-cream-light" dir="rtl">
@@ -83,15 +98,37 @@ const VideoTestimonials = () => {
               <CarouselItem key={video.id} className="pr-2 sm:pr-4 basis-[85%] sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                 <div className="group relative bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 sm:transform sm:hover:-translate-y-2">
                   {/* Video */}
-                  <div className="relative aspect-[9/16] sm:aspect-[4/3] overflow-hidden">
+                  <div
+                    className="relative aspect-[9/16] sm:aspect-[4/3] overflow-hidden cursor-pointer"
+                    onClick={() => toggleMute(video.id)}
+                  >
                     <video
+                      ref={(el) => { videoRefs.current[video.id] = el; }}
                       src={video.videoUrl}
                       className="w-full h-full object-cover"
                       autoPlay
                       loop
-                      muted
+                      muted={unmutedVideoId !== video.id}
                       playsInline
                     />
+
+                    {/* Sound Icon */}
+                    <div className="absolute bottom-3 right-3 bg-black/50 rounded-full p-2 transition-all">
+                      {unmutedVideoId === video.id ? (
+                        <Volume2 className="w-5 h-5 text-white" />
+                      ) : (
+                        <VolumeX className="w-5 h-5 text-white" />
+                      )}
+                    </div>
+
+                    {/* Tap hint */}
+                    {unmutedVideoId !== video.id && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="bg-black/60 text-white text-xs px-3 py-1 rounded-full">
+                          اضغط للصوت 🔊
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Info */}
