@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 
 export function DashboardPage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const { state, getStats, updateOrderStatus } = useOrders();
   const stats = getStats();
 
@@ -19,6 +19,10 @@ export function DashboardPage() {
     toast.success(t.admin.orderStatus.statusUpdated);
   };
 
+  const dashboardSubtitle = locale === "ar" 
+    ? "نظرة عامة على طلباتك ومبيعاتك"
+    : "Overview of your orders and sales";
+
   return (
     <div className="space-y-8">
       <div>
@@ -26,7 +30,7 @@ export function DashboardPage() {
           {t.admin.dashboard}
         </h1>
         <p className="text-muted-foreground">
-          نظرة عامة على طلباتك ومبيعاتك
+          {dashboardSubtitle}
         </p>
       </div>
 

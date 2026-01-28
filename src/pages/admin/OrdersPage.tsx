@@ -54,6 +54,10 @@ export function OrdersPage() {
     return filtered;
   }, [state.orders, statusFilter, areaFilter, searchQuery]);
 
+  const pageSubtitle = locale === "ar" 
+    ? "إدارة جميع طلبات العملاء"
+    : "Manage all customer orders";
+
   return (
     <div className="space-y-6">
       <div>
@@ -61,7 +65,7 @@ export function OrdersPage() {
           {t.admin.ordersPage.title}
         </h1>
         <p className="text-muted-foreground">
-          إدارة جميع طلبات العملاء
+          {pageSubtitle}
         </p>
       </div>
 

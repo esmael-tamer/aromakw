@@ -1,16 +1,18 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { LayoutDashboard, ShoppingBag, Users, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { LocaleProvider } from "@/contexts/LocaleContext";
 import { useLocale } from "@/contexts/LocaleContext";
 import { cn } from "@/lib/utils";
+import type { Locale } from "@/i18n";
 
 interface AdminLayoutProps {
   children: ReactNode;
 }
 
-export function AdminLayout({ children }: AdminLayoutProps) {
+function AdminLayoutInner({ children }: AdminLayoutProps) {
   const { t, isRTL, getLocalizedPath } = useLocale();
   const location = useLocation();
 
@@ -102,5 +104,34 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         <main className="flex-1">{children}</main>
       </div>
     </div>
+  );
+}
+
+export function AdminLayout({ children }: AdminLayoutProps) {
+  const location = useLocation();
+  // Extract locale from pathname (e.g., /en/admin or /ar/admin)
+  const pathSegments = location.pathname.split('/').filter(Boolean);
+  const localeFromPath = pathSegments[0];
+  const locale = (localeFromPath === "en" ? "en" : "ar") as Locale;
+  const isRTL = locale === "ar";
+
+  // Update HTML direction based on locale
+  useEffect(() => {
+    document.documentElement.dir = isRTL ? "rtl" : "ltr";
+    document.documentElement.lang = locale;
+    
+    return () => {
+      // Reset to default on unmount
+      document.documentElement.dir = "rtl";
+      document.documentElement.lang = "ar";
+    };
+  }, [locale, isRTL]);
+
+  return (
+    <LocaleProvider locale={locale}>
+      <div className={`min-h-screen ${isRTL ? "font-arabic" : ""}`}>
+        <AdminLayoutInner>{children}</AdminLayoutInner>
+      </div>
+    </LocaleProvider>
   );
 }

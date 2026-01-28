@@ -78,6 +78,10 @@ export function CustomersPage() {
     }
   };
 
+  const pageSubtitle = locale === "ar" 
+    ? "قائمة بجميع العملاء وإحصائياتهم"
+    : "List of all customers and their statistics";
+
   return (
     <div className="space-y-6">
       <div>
@@ -85,7 +89,7 @@ export function CustomersPage() {
           {t.admin.customersPage.title}
         </h1>
         <p className="text-muted-foreground">
-          قائمة بجميع العملاء وإحصائياتهم
+          {pageSubtitle}
         </p>
       </div>
 
