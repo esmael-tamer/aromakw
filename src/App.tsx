@@ -69,6 +69,9 @@ const App = () => (
             <Route path="/en/admin/orders" element={<AdminLayout><OrdersPage /></AdminLayout>} />
             <Route path="/en/admin/customers" element={<AdminLayout><CustomersPage /></AdminLayout>} />
 
+            {/* Admin default route redirect */}
+            <Route path="/admin" element={<Navigate to="/ar/admin" replace />} />
+
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

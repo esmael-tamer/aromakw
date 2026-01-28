@@ -15,7 +15,7 @@ export function DashboardPage() {
   const recentOrders = state.orders.slice(0, 10);
 
   const handleStatusChange = (orderId: string, status: string) => {
-    updateOrderStatus(orderId, status as any);
+    updateOrderStatus(orderId, status as OrderStatus);
     toast.success(t.admin.orderStatus.statusUpdated);
   };
 
