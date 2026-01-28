@@ -19,8 +19,8 @@ const Index = () => {
       <SpecialOfferBanner />
       <ProductHero />
       <VideoTestimonials />
-      <FeaturesSection />
       <JaydenCollection />
+      <FeaturesSection />
       <FAQSection />
       <CTASection />
       <Footer />
