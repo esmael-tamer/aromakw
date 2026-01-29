@@ -17,22 +17,18 @@ const CountdownTimer = () => {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
-      // Get midnight of next day
-      const midnight = new Date();
-      midnight.setHours(24, 0, 0, 0);
+      // Get midnight of next day (tomorrow at 00:00:00)
+      const midnight = new Date(now);
+      midnight.setDate(midnight.getDate() + 1);
+      midnight.setHours(0, 0, 0, 0);
 
       const difference = midnight.getTime() - now.getTime();
 
-      if (difference > 0) {
-        setTimeLeft({
-          hours: Math.floor(difference / (1000 * 60 * 60)),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        });
-      } else {
-        // Reset at midnight - this handles the edge case
-        setTimeLeft({ hours: 23, minutes: 59, seconds: 59 });
-      }
+      const hours = Math.floor(difference / (1000 * 60 * 60));
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      setTimeLeft({ hours, minutes, seconds });
     };
 
     calculateTimeLeft();
