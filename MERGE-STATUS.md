@@ -96,6 +96,49 @@ git push origin main
 
 ---
 
+## ✅ قائمة الفحص اليدوي | Manual Test Checklist
+
+### اختبار الوصول المباشر | Direct Access Test
+بعد النشر، اختبر الروابط التالية بالنقر عليها في نافذة جديدة:
+
+#### لوحة التحكم | Admin Dashboard
+- [ ] https://esmael-tamer.github.io/aromakw/admin (يجب أن يعيد التوجيه إلى `/ar/admin`)
+- [ ] https://esmael-tamer.github.io/aromakw/ar/admin (لوحة التحكم العربية)
+- [ ] https://esmael-tamer.github.io/aromakw/en/admin (لوحة التحكم الإنجليزية)
+- [ ] https://esmael-tamer.github.io/aromakw/ar/admin/orders (صفحة الطلبات)
+- [ ] https://esmael-tamer.github.io/aromakw/en/admin/orders (صفحة الطلبات)
+- [ ] https://esmael-tamer.github.io/aromakw/ar/admin/customers (صفحة العملاء)
+- [ ] https://esmael-tamer.github.io/aromakw/en/admin/customers (صفحة العملاء)
+
+#### الصفحات العامة | Public Pages
+- [ ] https://esmael-tamer.github.io/aromakw/ (الصفحة الرئيسية)
+- [ ] https://esmael-tamer.github.io/aromakw/ar/products (المنتجات العربية)
+- [ ] https://esmael-tamer.github.io/aromakw/en/products (المنتجات الإنجليزية)
+
+### اختبار التنقل الداخلي | Internal Navigation Test
+- [ ] التنقل من الصفحة الرئيسية إلى لوحة التحكم
+- [ ] التنقل بين صفحات لوحة التحكم (Dashboard → Orders → Customers)
+- [ ] التبديل بين اللغتين (عربي ⟷ إنجليزي)
+- [ ] الرجوع باستخدام زر المتصفح
+
+### اختبار الوظائف | Functionality Test
+- [ ] عرض الإحصائيات في لوحة التحكم
+- [ ] عرض جدول الطلبات
+- [ ] تغيير حالة الطلب
+- [ ] فلترة الطلبات
+- [ ] البحث في الطلبات
+- [ ] عرض قائمة العملاء
+
+### اختبار Deep Linking (مهم جداً) | Deep Linking Test (Very Important)
+افتح نافذة تصفح خاص وجرّب:
+- [ ] نسخ ولصق رابط `/ar/admin` مباشرة في شريط العنوان
+- [ ] إعادة تحميل الصفحة (F5) عند التواجد في `/ar/admin`
+- [ ] مشاركة رابط `/en/admin/orders` مع شخص آخر
+
+**ملاحظة:** إذا فشل اختبار Deep Linking، تحقق من وجود `404.html` في مجلد `dist`.
+
+---
+
 ## ✨ المميزات | Features
 
 ### لوحة التحكم | Dashboard
