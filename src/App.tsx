@@ -23,13 +23,28 @@ import { OrdersProvider } from "@/contexts/OrdersContext";
 
 const queryClient = new QueryClient();
 
+/**
+ * BrowserRouter basename configuration for GitHub Pages deployment
+ * 
+ * When deployed to GitHub Pages at https://username.github.io/repository-name/,
+ * the basename must match the repository name to ensure all routes work correctly.
+ * 
+ * - For development: basename can be "/" or match your dev server configuration
+ * - For GitHub Pages: basename must be "/aromakw" (the repository name)
+ * - Can be configured via VITE_BASENAME environment variable
+ * 
+ * The 404.html file (copy of index.html) ensures that direct navigation to routes
+ * like /aromakw/ar/admin works correctly by reloading the SPA application.
+ */
+const basename = import.meta.env.VITE_BASENAME || "/aromakw";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <OrdersProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/aromakw">
+        <BrowserRouter basename={basename}>
           <Routes>
             {/* Original landing page - untouched */}
             <Route path="/" element={<Index />} />
