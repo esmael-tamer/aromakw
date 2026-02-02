@@ -35,6 +35,6 @@ try {
   console.log('✅ Successfully copied index.html to 404.html for GitHub Pages SPA routing');
   console.log(`   ${indexPath} → ${notFoundPath}`);
 } catch (error) {
-  console.error('❌ Error copying index.html to 404.html:', error.message);
+  console.error('❌ Error copying index.html to 404.html:', String(error));
   process.exit(1);
 }

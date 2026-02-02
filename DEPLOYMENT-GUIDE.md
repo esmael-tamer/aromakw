@@ -202,6 +202,9 @@ npm run preview
 ثم افتح المتصفح على:
 Then open browser at: http://localhost:4173/aromakw/
 
+**ملاحظة:** خادم المعاينة يحترم basename المحدد في vite.config.ts
+**Note:** The preview server respects the basename configured in vite.config.ts
+
 ---
 
 ## 🎯 الأوامر المفيدة | Useful Commands
