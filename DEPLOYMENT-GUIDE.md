@@ -130,7 +130,7 @@ https://esmael-tamer.github.io/aromakw/admin
 - في `vite.config.ts`، تأكد من: `base: "/aromakw/"`
 - في `src/App.tsx`، تأكد من: `basename={import.meta.env.VITE_BASENAME || '/aromakw'}`
 
-### المشكلة: التطبيق لا يتحدث
+### المشكلة: التطبيق لا يتحدّث
 **الحل:**
 1. تحقق من حالة GitHub Actions في تبويب "Actions"
 2. تأكد من تفعيل GitHub Pages في إعدادات المستودع
