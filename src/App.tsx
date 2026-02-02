@@ -23,10 +23,10 @@ import { OrdersProvider } from "@/contexts/OrdersContext";
 
 const queryClient = new QueryClient();
 
+// Read basename from environment variable with default fallback
+const basename = import.meta.env.VITE_BASENAME || '/aromakw';
+
 const App = () => {
-  // Read basename from environment variable with default fallback
-  const basename = import.meta.env.VITE_BASENAME || '/aromakw';
-  
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
