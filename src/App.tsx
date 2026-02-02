@@ -23,7 +23,8 @@ import { OrdersProvider } from "@/contexts/OrdersContext";
 
 const queryClient = new QueryClient();
 
-// Read basename from environment variable with default fallback
+// Read basename from environment variable with default fallback.
+// Placed at module level since Vite env vars are constant at runtime.
 const basename = import.meta.env.VITE_BASENAME || '/aromakw';
 
 const App = () => {
