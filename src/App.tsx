@@ -23,13 +23,17 @@ import { OrdersProvider } from "@/contexts/OrdersContext";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <OrdersProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter basename="/aromakw">
+const App = () => {
+  // Read basename from environment variable with default fallback
+  const basename = import.meta.env.VITE_BASENAME || '/aromakw';
+  
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <OrdersProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter basename={basename}>
           <Routes>
             {/* Original landing page - untouched */}
             <Route path="/" element={<Index />} />
@@ -80,5 +84,6 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+};
 
 export default App;
