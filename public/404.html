@@ -17,6 +17,19 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@AromaAmoreKW" />
 
+  <!-- SPA Redirect Script -->
+  <script>
+    // Redirect all 404s to the index.html for client-side routing
+    // This allows React Router to handle all routes
+    (function() {
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+
   <!-- Meta Pixel Code -->
   <script>
     !function (f, b, e, v, n, t, s) {
