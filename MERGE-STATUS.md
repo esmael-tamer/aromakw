@@ -78,6 +78,30 @@ git push origin main
 3. ✅ نشر الموقع على GitHub Pages
 4. ✅ الموقع متاح على: https://esmael-tamer.github.io/aromakw/
 
+### ✅ قائمة التحقق بعد النشر | Post-Deployment Checklist
+
+بعد اكتمال النشر (2-5 دقائق)، تحقق من:
+
+#### الموقع الرئيسي | Main Site
+- [ ] الصفحة الرئيسية: https://esmael-tamer.github.io/aromakw/
+- [ ] صفحة المنتجات: https://esmael-tamer.github.io/aromakw/ar/products
+
+#### لوحة التحكم العربية | Arabic Admin Dashboard
+- [ ] لوحة القيادة: https://esmael-tamer.github.io/aromakw/ar/admin
+- [ ] صفحة الطلبات: https://esmael-tamer.github.io/aromakw/ar/admin/orders
+- [ ] صفحة العملاء: https://esmael-tamer.github.io/aromakw/ar/admin/customers
+
+#### لوحة التحكم الإنجليزية | English Admin Dashboard
+- [ ] Dashboard: https://esmael-tamer.github.io/aromakw/en/admin
+- [ ] Orders Page: https://esmael-tamer.github.io/aromakw/en/admin/orders
+- [ ] Customers Page: https://esmael-tamer.github.io/aromakw/en/admin/customers
+
+#### اختبارات إضافية | Additional Tests
+- [ ] الروابط المباشرة تعمل (refresh الصفحة على أي مسار)
+- [ ] زر الرجوع في المتصفح يعمل
+- [ ] التنقل بين الصفحات سلس
+- [ ] البيانات تُحفظ في localStorage
+
 ---
 
 ## 🌐 الروابط بعد النشر | URLs After Deployment
