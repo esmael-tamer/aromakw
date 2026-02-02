@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting... | مجموعة جايدن</title>
+  <script>
+    // Single Page Application (SPA) redirect for GitHub Pages
+    // This file handles direct navigation to admin routes and other SPA routes
+    // when users access URLs like /aromakw/admin or /aromakw/ar/admin
+    
+    // GitHub Pages serves this 404.html when a route doesn't exist as a physical file
+    // We redirect to index.html which then handles the routing via React Router
+    
+    const pathSegmentsToKeep = 1; // Keep '/aromakw' part
+    
+    const redirect = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    
+    if (redirect && redirect !== location.href) {
+      // If we have a stored redirect, use it
+      history.replaceState(null, null, redirect);
+    } else {
+      // Otherwise, store the current path and redirect to index.html
+      const path = location.pathname.slice(0);
+      sessionStorage.redirect = location.href;
+      
+      // Redirect to the base index.html
+      location.replace(
+        location.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + 
+        '/?redirect=' + encodeURIComponent(path + location.search + location.hash)
+      );
+    }
+  </script>
+</head>
+<body>
+  <p style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
+    جاري التحويل... / Redirecting...
+  </p>
+</body>
+</html>
