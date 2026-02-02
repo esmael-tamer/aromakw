@@ -23,13 +23,18 @@ import { OrdersProvider } from "@/contexts/OrdersContext";
 
 const queryClient = new QueryClient();
 
+// Use environment variable for basename to support different deployment targets
+// For GitHub Pages: VITE_BASENAME=/aromakw (set in .env.production)
+// For local dev: defaults to '/aromakw' for consistency
+const basename = import.meta.env.VITE_BASENAME || '/aromakw';
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <OrdersProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/aromakw">
+        <BrowserRouter basename={basename}>
           <Routes>
             {/* Original landing page - untouched */}
             <Route path="/" element={<Index />} />
