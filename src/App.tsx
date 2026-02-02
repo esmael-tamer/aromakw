@@ -29,6 +29,14 @@ const App = () => (
       <OrdersProvider>
         <Toaster />
         <Sonner />
+        {/* 
+          BrowserRouter basename configuration for GitHub Pages:
+          - GitHub Pages serves this app at: https://esmael-tamer.github.io/aromakw/
+          - basename="/aromakw" matches the repository name in the URL path
+          - This enables proper routing for all pages including admin routes
+          - Admin dashboard accessible at: /aromakw/admin, /aromakw/ar/admin, /aromakw/en/admin
+          - The 404.html redirect mechanism ensures direct navigation to admin routes works
+        */}
         <BrowserRouter basename="/aromakw">
           <Routes>
             {/* Original landing page - untouched */}
