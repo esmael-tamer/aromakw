@@ -23,13 +23,16 @@ import { OrdersProvider } from "@/contexts/OrdersContext";
 
 const queryClient = new QueryClient();
 
+// Read basename from environment variable, default to '/aromakw' for GitHub Pages
+const basename = import.meta.env.VITE_BASENAME || '/aromakw';
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <OrdersProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/aromakw">
+        <BrowserRouter basename={basename}>
           <Routes>
             {/* Original landing page - untouched */}
             <Route path="/" element={<Index />} />
