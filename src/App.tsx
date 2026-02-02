@@ -23,13 +23,18 @@ import { OrdersProvider } from "@/contexts/OrdersContext";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <OrdersProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter basename="/aromakw">
+// Read basename from environment variable with default fallback.
+// Placed at module level since Vite env vars are constant at runtime.
+const basename = import.meta.env.VITE_BASENAME || '/aromakw';
+
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <OrdersProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter basename={basename}>
           <Routes>
             {/* Original landing page - untouched */}
             <Route path="/" element={<Index />} />
@@ -80,5 +85,6 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+};
 
 export default App;
