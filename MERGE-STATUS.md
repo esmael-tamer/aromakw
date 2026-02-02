@@ -145,6 +145,59 @@ git push origin main
 
 ---
 
+## 🧪 اختبار يدوي قبل النشر | Manual Testing Before Deployment
+
+### اختبار البناء المحلي | Local Build Test
+قم بتشغيل الأوامر التالية للتأكد من أن كل شيء يعمل:
+
+Run these commands to ensure everything works:
+
+```bash
+# بناء المشروع مع نسخ 404.html
+npm run build:prod
+
+# تحقق من وجود 404.html
+ls -la dist/404.html
+
+# معاينة البناء محلياً
+npm run preview
+```
+
+### الروابط للاختبار | URLs to Test
+افتح المتصفح على http://localhost:4173 واختبر:
+
+Open browser at http://localhost:4173 and test:
+
+#### الصفحات الأساسية | Basic Pages
+- [ ] `/aromakw/` - الصفحة الرئيسية
+- [ ] `/aromakw/ar/products` - المتجر (عربي)
+- [ ] `/aromakw/en/products` - المتجر (إنجليزي)
+- [ ] `/aromakw/ar/cart` - عربة التسوق
+
+#### لوحة التحكم | Admin Dashboard
+- [ ] `/aromakw/admin` - يجب أن يحول إلى `/aromakw/ar/admin`
+- [ ] `/aromakw/ar/admin` - لوحة التحكم (عربي)
+- [ ] `/aromakw/en/admin` - Admin Dashboard (English)
+- [ ] `/aromakw/ar/admin/orders` - صفحة الطلبات
+- [ ] `/aromakw/ar/admin/customers` - صفحة العملاء
+- [ ] `/aromakw/en/admin/orders` - Orders page
+- [ ] `/aromakw/en/admin/customers` - Customers page
+
+#### اختبار التنقل المباشر | Direct Navigation Test
+**مهم:** اختبر فتح كل رابط في نافذة جديدة أو بالضغط F5:
+
+**Important:** Test opening each URL in a new window or pressing F5:
+- [ ] فتح `/aromakw/ar/admin` مباشرة (لا يجب أن يظهر 404)
+- [ ] تحديث الصفحة (F5) في `/aromakw/ar/admin/orders`
+- [ ] فتح `/aromakw/en/admin/customers` في نافذة جديدة
+
+### اختبار بعد النشر | Test After Deployment
+بعد النشر على GitHub Pages، اختبر نفس الروابط على:
+After deploying to GitHub Pages, test same URLs at:
+https://esmael-tamer.github.io/aromakw/
+
+---
+
 **✨ نجح الدمج! الموقع جاهز للنشر! ✨**
 
 **✨ Merge Successful! Site Ready for Deployment! ✨**
