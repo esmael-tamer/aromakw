@@ -1,0 +1,5 @@
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px hsl(40 70% 50% / 0.5);
+  }
+}
